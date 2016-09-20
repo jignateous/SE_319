@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ValidateForm</title>
+    <script src="../Javascript/validation1.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    function validateForm(bool)
+    {
+        if(bool == false) {
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+</script>
+<form id="validationForm" onsubmit="return validateForm(false);" data-ajax="false">
+    <fieldset>
+        <legend>Validation Form</legend>
+        <p>
+            <label for="firstname">First Name</label>
+            <input id="firstname" name="firstname" type="text"/>
+            <img id="fimg" src="" style="width:25px;height:25px;visibility:hidden;">
+        </p>
+        <p>
+            <label for="lastname">Last Name</label>
+            <input id="lastname" name="lastname" type="text" />
+            <img id="limg" src="" style="width:25px;height:25px;visibility:hidden;">
+
+        </p>
+        <p>
+            <label for="gender" >Gender</label>
+            <select name="genderdropdown" id="gender">
+                <option id="nothing" disabled selected value> -- select an option -- </option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select>
+            <img id="gimg" src="" style="width:25px;height:25px;visibility:hidden;">
+
+
+        </p>
+        <p>
+            <label for="state" >State</label>
+            <select name="statedropdown" id="state">
+                <option disabled selected value> -- select an option -- </option>
+                <option value="texas">Texas</option>
+                <option value="california">California</option>
+                <option value="newyork">New York</option>
+                <option value="hawaii">Hawaii</option>
+                <option value="florida">Florida</option>
+                <option value="newhampshire">New Hampshire</option>
+                <option value="washington">Washington</option>
+                <option value="colorado">Colorado</option>
+                <option value="iowa">Iowa</option>
+                <option value="virginia">Virginia</option>
+                <option value="georgia">Goergia</option>
+                <option value="northcarolina">North Carolina</option>
+                <option value="southcarolina">South Carolina</option>
+                <option value="alabama">Alabama</option>
+                <option value="mississippi">Mississippi</option>
+                <option value="oklahoma">Oklahoma</option>
+                <option value="utah">Utah</option>
+                <option value="connecticut">Connecticut</option>
+                <option value="maine">Maine</option>
+                <option value="kansas">Kansas</option>
+                <option value="newmexico">New Mexico</option>
+                <option value="montana">Montana</option>
+                <option value="oregan">Oregan</option>
+                <option value="wyoming">Wyoming</option>
+                <option value="idaho">Idaho</option>
+                <option value="southdakota">South Dakota</option>
+                <option value="northdakota">North Dakota</option>
+                <option value="minnesota">Minnesota</option>
+                <option value="missouri">Missouri</option>
+                <option value="arkansas">Arkansas</option>
+                <option value="lousiana">Lousiana</option>
+                <option value="kentucky">Kentucky</option>
+                <option value="tennessee">Tennessee</option>
+                <option value="idiana">Idiana</option>
+                <option value="ohio">Ohio</option>
+                <option value="wisconsin">Wisconsin</option>
+                <option value="alaska">Alaska</option>
+                <option value="westvirginia">West Virginia</option>
+                <option value="pennsylvania">Pennsylvania</option>
+                <option value="newjersey">New Jersey</option>
+                <option value="rhodeisland">Rhode Island</option>
+                <option value="maryland">Marylad</option>
+                <option value="delware">Delaware</option>
+                <option value="nevada">Nevada</option>
+                <option value="nebraska">Nebraska</option>
+                <option value="michigan">Michigan</option>
+                <option value="illinois">Illinois</option>
+                <option value="vermont">Vermont</option>
+                <option value="massachusetts">Massachusetts</option>
+                <option value="washingtondc">Washington D.C.</option>
+            </select>
+            <img id="simg" src="" style="width:25px;height:25px;visibility:hidden;">
+
+        </p>
+        <button type="button" id="submit" onclick="mySubmitFunction()">Submit</button>
+        <script>
+
+            function mySubmitFunction(){
+                var my_firstname = document.getElementById("firstname").value;
+                var my_lastname = document.getElementById("lastname").value;
+                var my_gender = document.getElementById("gender");
+                var goption = my_gender.selectedIndex;
+                var my_state = document.getElementById("state");
+                var soption = my_state.selectedIndex;
+                console.log("SubmitFunction");
+                if(fnameCheck(my_firstname) == true,  lnameCheck(my_lastname) == true, goption != 0, soption != 0){
+                    console.log("Change html");
+                    document.cookie = "firstname=" + my_firstname + ";lastname=" + my_lastname + ";gender=" + my_gender.value + ";state=" + my_state.value;
+                    location.href = "../HTML/validation2.html";
+                }
+                else{
+                    console.log(goption);
+                    if((fnameCheck(my_firstname) == true && my_firstname != null )){
+                        document.getElementById("fimg").style.visibility = "visible";
+                        document.getElementById("fimg").src = "../correct.png";
+                    }
+                    else{
+                        document.getElementById("fimg").style.visibility = "visible";
+                        document.getElementById("fimg").src = "../wrong.png";
+                    }
+                    if(lnameCheck(my_lastname) == true && my_lastname != null){
+                        document.getElementById("limg").style.visibility = "visible";
+                        document.getElementById("limg").src = "../correct.png";
+                    }
+                    else{
+                        document.getElementById("limg").style.visibility = "visible";
+                        document.getElementById("limg").src = "../wrong.png";
+                    }
+                    if(goption != 0){ //option == null ||
+                        document.getElementById("gimg").style.visibility = "visible";
+                        document.getElementById("gimg").src = "../correct.png";
+                    }
+                    else{
+                        document.getElementById("gimg").style.visibility = "visible";
+                        document.getElementById("gimg").src = "../wrong.png";
+                    }
+                    if(soption != 0){
+                        document.getElementById("simg").style.visibility = "visible";
+                        document.getElementById("simg").src = "../correct.png";
+                    }
+                    else{
+                        document.getElementById("simg").style.visibility = "visible";
+                        document.getElementById("simg").src = "../wrong.png";
+                    }
+
+                }
+                //var myBtn = document.getElementById("button");
+                //myBtn.onclick = mySubmitFunction();
+
+            }
+        </script>
+    </fieldset>
+</form>
+
+</body>
+</html>
