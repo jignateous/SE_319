@@ -1,0 +1,34 @@
+<html>
+<head>
+    <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+    <script type='text/javascript'>
+        google.charts.load('upcoming', {'packages': ['geomap']});
+        google.charts.setOnLoadCallback(drawMap);
+
+        function drawMap() {
+            var data = google.visualization.arrayToDataTable([
+                ['City', 'Popularity'],
+                [localStorage.getItem("address"), 500]
+            ]);
+
+            var options = {};
+            options['region'] = 'US';
+            options['colors'] = [0xFF8747, 0xFFB581, 0xc06000]; //orange colors
+            options['dataMode'] = 'markers';
+
+            var container = document.getElementById('map_canvas');
+            var geomap = new google.visualization.GeoMap(container);
+            geomap.draw(data, options);
+        };
+
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2viX45fIN9lfORlHb2G7BvaEkayjVFwA&callback=initMap">
+    </script>
+</head>
+
+<body>
+<div id='map_canvas'></div>
+</body>
+
+</html>

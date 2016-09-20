@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact information</title>
+    <script src="../Javascript/validation2.js"></script>
+</head>
+<body>
+<form action="Maps.html">
+    <fieldset>
+        <legend>Contact information:</legend>
+        Email:<br>
+        <input type="text" name="email" id="email">
+        <img id="eimg" src="" style="width:25px;height:25px;visibility:hidden;"><br>
+        Phone:<br>
+        <input type="text" name="phone" id="phone">
+        <img id="pimg" src="" style="width:25px;height:25px;visibility:hidden;"><br>
+        Address:<br>
+        <input type="text" name="address" id="address">
+        <img id="aimg" src="" style="width:25px;height:25px;visibility:hidden;"><br><br>
+        <button type="button" value="Submit" onclick="setAddress()">Submit</button>
+        <script>
+            function setAddress() {
+                var my_address = document.getElementById('address').value;
+                var my_email = document.getElementById("email").value;
+                var my_phone = document.getElementById("phone").value;
+                if(validateAddress(my_address) == true && validateEmail(my_email) == true && validatePhone(my_phone) == true){
+                    localStorage.setItem("address", my_address);
+                    document.cookie = "firstname=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                    document.cookie = "lastname=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                    document.cookie = "state=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                    document.cookie = "gender=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                    location.href = "../HTML/Maps.html";
+                }
+                else {
+                    console.log("else");
+                    if (validatePhone(my_phone) == true) {
+                        document.getElementById("pimg").style.visibility = "visible";
+                        document.getElementById("pimg").src = "../correct.png";
+                    }
+                    else {
+                        document.getElementById("pimg").style.visibility = "visible";
+                        document.getElementById("pimg").src = "../wrong.png";
+                    }
+                    if (validateEmail(my_email) == true) {
+                        document.getElementById("eimg").style.visibility = "visible";
+                        document.getElementById("eimg").src = "../correct.png";
+                    }
+                    else {
+                        document.getElementById("eimg").style.visibility = "visible";
+                        document.getElementById("eimg").src = "../wrong.png";
+                    }
+                    if (validateAddress(my_address) == true) {
+                        document.getElementById("aimg").style.visibility = "visible";
+                        document.getElementById("aimg").src = "../correct.png";
+                    }
+                    else {
+                        document.getElementById("aimg").style.visibility = "visible";
+                        document.getElementById("aimg").src = "../wrong.png";
+                    }
+
+                }
+            }
+        </script>
+    </fieldset>
+</form>
+</body>
+</html>
+

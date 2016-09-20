@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>It's Canvas Time!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+<input id="begend" type="button" value="Start" />
+<input id="turnL" type="button" value="Turn Left" />
+<input id="turnR" type="button" value="Turn Right" /><br>
+<canvas id="canvasId" width="1000" height="500" style="border:1px solid #000000;">
+</canvas>
+<script type="text/javascript">
+//    var myBtn = document.getElementById("begend");
+//    myBtn.onclick = function () {
+//        // getContext() method returns an object that provides methods
+//        // and properties for drawing on the canvas
+//        var canvas = document.getElementById("canvasId");
+//        var context = document.getElementById("canvasId").getContext("2d");
+//        if(myBtn.value == "Stop"){
+//            myBtn.value = "Start";
+//            clearInterval(lineMethod);
+//            context.clearRect(0, 0, canvas.width, canvas.height);
+//        }
+//        else {
+//            myBtn.value = "Stop";
+//            setInterval(lineMethod, 1000)
+////            var ctx = context;
+////            ctx.moveTo(0,250);
+////            var col = 0;
+////            var row = 250;
+////            //while(true){
+////            var i = 0;
+////            while(i < 100){
+////                ctx.lineTo(col+i,row);
+////                ctx.stroke();
+////                i+=1;
+////            }
+//
+//        }
+//
+//        function lineMethod(){
+//
+//            var ctx = context;
+//            ctx.moveTo(0,250);
+//            var col = 0;
+//            var row = 250;
+//            //while(true){
+//            var i = 0;
+//            ctx.lineTo(col+i,row);
+//            ctx.stroke();
+//            i+=10;
+//        }
+//    }
+
+    $("#begend").click(function () {
+        var c = setInterval(lineMethod, 1000);
+        console.log("Click");
+        if (this.value == "Start") {
+            $(this).prop('value', 'Stop'); // Set button value to Stop Clock
+        } else if (this.value == "Stop") {
+            $(this).prop('value', 'Start');
+            clearInterval(c);
+        }
+    });
+
+    function lineMethod(){
+        var canvas = document.getElementById("canvasId");
+        var context = document.getElementById("canvasId").getContext("2d");
+        var ctx = context;
+        ctx.moveTo(0,250);
+        var col = 0;
+        var row = 250;
+        var i = 0;
+        while(true) {
+            ctx.lineTo(i, row);
+            ctx.moveTo(i,row);
+            ctx.stroke();
+            i +=5;
+        }
+    }
+
+    //look at other canvas methods!
+</script>
+</body>
+</html>
